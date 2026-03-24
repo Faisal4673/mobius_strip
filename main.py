@@ -29,6 +29,27 @@ def make_series_set():
     series_list = list(series_set)
     return series_list
 
+def compare_series(series_list):
+    reversable_series = []
+    for series in series_list:
+        reverse_series = series[::-1]
+        counter = 0
+        for pitch, reverse_pitch in zip(series, reverse_series):
+            if abs(pitch - reverse_pitch) == 0 or abs(pitch - reverse_pitch) == 2 or abs(pitch - reverse_pitch) == 4 or abs(pitch - reverse_pitch) == 5 or abs(pitch - reverse_pitch) == 7:
+                counter += 1
+        if counter == len(series):
+            reversable_series.append(series)
+    return reversable_series
+
+def print_series(result):
+    for series in result:
+        print(series)
+
+print("Generating series...")
+result = compare_series(make_series_set())
+print(f"Generated {len(result)} reversible series.")
+print_series(result)
+
+
 
     
-print(len(make_series_set()))
