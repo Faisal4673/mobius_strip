@@ -1,6 +1,6 @@
 from note_series import Note_Series
-from is_valid_counterpoint import is_valid_counterpoint
 from reroll_counterpoint import reroll_counterpoint
+from basic_functions import convert_to_notes
 
 class Counterpoint_series:
     def __init__(self, name):
@@ -12,12 +12,17 @@ class Counterpoint_series:
         self.series1 = fixed_series[0]
         self.series2 = fixed_series[1]
     
-    def 
-        
-        
+    def get_series1_notes(self):
+        return convert_to_notes(self.series1.series)
+    
+    def get_series2_notes(self):
+        return convert_to_notes(self.series2.series)
+    
 
 
 counterpoint_series = Counterpoint_series("counterpoint_series")
-print(counterpoint_series.series1.series)
-print(counterpoint_series.series2.series)
+print("Series 1 notes:")
+print(counterpoint_series.get_series1_notes())
+print("Series 2 notes:")
+print(counterpoint_series.get_series2_notes())
 

@@ -1,7 +1,7 @@
 
 import itertools
 
-from multi_species import get_prev_pitches
+from basic_functions import get_prev_pitches
 
 CONSONANT_INTERVALS = [0, 2, 4, 5, 7]
 
@@ -13,7 +13,7 @@ def is_consonant(pitch1, pitch2):
     else: return False
 
 def is_stepwise_dissonance(pitch,  index, index2, series):
-    if abs(get_prev_pitches(series, index, index2) - pitch) == 1:
+    if get_prev_pitches(series, index, index2) and abs(get_prev_pitches(series, index, index2)[-1] - pitch) == 1:
         return True
     else: return False
     

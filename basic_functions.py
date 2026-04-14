@@ -1,7 +1,7 @@
 import random
 from is_valid_motion import is_valid_motion
 
-def new_series(length, species): 
+def make_series(length, species): 
     series = []
     for i in range(length):
         series.append([])
@@ -34,3 +34,17 @@ def fix_series(series):
                     break
     #print("Fixed series: ", series)
     return series
+
+def convert_to_notes(series):
+    note_dict = { 
+        0: "C",
+        1: "D",
+        2: "E",
+        3: "F",
+        4: "G",
+        5: "A",
+        6: "B",
+        7: "C"
+    }
+    converted_series = [[note_dict[pitch] for pitch in beat] for beat in series]
+    print(converted_series)
