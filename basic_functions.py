@@ -1,0 +1,36 @@
+import random
+from is_valid_motion import is_valid_motion
+
+def new_series(length, species): 
+    series = []
+    for i in range(length):
+        series.append([])
+
+    for beat in series:
+        num_pitches = random.randint(1, species)
+        if num_pitches == 1:
+            beat.append(random.randint(0, 7))
+        else:
+            beat.append(random.randint(0, 7))
+            beat.append(random.randint(0, 7))
+
+    #print("Generated Series: ", series)
+    return series
+
+def get_prev_pitches(series, index, index2):
+
+    flat = [pitch for beat in series[:index] for pitch in beat] + series[index][:index2]
+    
+    return flat[-2:]  # Return the last two pitches before the current one
+
+def fix_series(series):
+    for index, beat in enumerate(series):
+        for index2, pitch in enumerate(beat):
+            prev_pitches = get_prev_pitches(series, index, index2)
+            while not is_valid_motion(pitch, prev_pitches):
+                new_pitch = random.randint(0, 7)
+                if is_valid_motion(new_pitch, prev_pitches):
+                    series[index][index2] = new_pitch
+                    break
+    #print("Fixed series: ", series)
+    return series

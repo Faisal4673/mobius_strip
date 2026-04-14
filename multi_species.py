@@ -7,9 +7,7 @@ def get_prev_pitches(series, index, index2):
     
     return flat[-2:]  # Return the last two pitches before the current one
 
-def new_multi_species_series(length, species):
-
-    
+def new_multi_species_series(length, species): 
     #length = int(input("Input Series Length: "))
     series = []
     for i in range(length):
