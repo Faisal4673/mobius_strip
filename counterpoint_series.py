@@ -1,5 +1,5 @@
 from note_series import Note_Series
-from reroll_counterpoint import reroll_counterpoint
+from reroll_counterpoint import reroll_counterpoint, reroll_counterpoint_series1, reroll_counterpoint_series2, reroll_mobius_strip
 from basic_functions import convert_to_notes
 
 class Counterpoint_series:
@@ -18,9 +18,14 @@ class Counterpoint_series:
     def get_series2_notes(self):
         return convert_to_notes(self.series2.series)
     
+    def mobius_strip(self):
+        self.series1 = reroll_mobius_strip(self.series1)
+        self.series2.overwrite(self.series1.reverse_series)
+    
 
 
 counterpoint_series = Counterpoint_series("counterpoint_series")
+counterpoint_series.mobius_strip()
 print("Series 1 notes:")
 print(counterpoint_series.get_series1_notes())
 print("Series 2 notes:")
