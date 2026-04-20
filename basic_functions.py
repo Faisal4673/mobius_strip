@@ -7,12 +7,19 @@ def make_series(length, species):
         series.append([])
 
     for beat in series:
-        num_pitches = random.randint(1, species)
-        if num_pitches == 1:
+        if species == 1:
             beat.append(random.randint(0, 7))
-        else:
+        elif species == 2:
             beat.append(random.randint(0, 7))
             beat.append(random.randint(0, 7))
+        elif species == 3:
+            num_pitches = random.randint(1, 2)
+            if num_pitches == 1:
+                beat.append(random.randint(0, 7))
+            else:
+                beat.append(random.randint(0, 7))
+                beat.append(random.randint(0, 7))
+        else: raise Exception("Invalid species number. Must be 1, 2, or 3.")
 
     #print("Generated Series: ", series)
     return series
